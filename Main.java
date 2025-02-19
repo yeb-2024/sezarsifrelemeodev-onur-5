@@ -70,6 +70,20 @@ public class    Main extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        try {
+            int anahter = Integer.parseInt(this.anahter.getText());
+            String mesaj = this.mesaj.getText();
 
+            if (e.getSource() == şifreleme) {
+                String şifreleme = şifrelemee(mesaj, anahter);
+                sonuç.setText("Şifrelenmiş Mesaj: " + şifreleme);
+            } else if (e.getSource() == şifreçözme) {
+                String şifreçözme = çözmee(mesaj, anahter);
+                sonuç.setText("Çözülmüş Mesaj: " + şifreçözme);
+            }
+        } catch (NumberFormatException ex) {
+            sonuç.setText("Geçersiz anahtar Lütfen 0-25 arasında bir sayı girin.");
+        }
     }
+
 }
