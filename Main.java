@@ -45,8 +45,30 @@ public class    Main extends JFrame implements ActionListener {
 
         setVisible(true);
     }
+    public static String şifrelemee(String text, int key) {
+        StringBuilder result = new StringBuilder();
 
-        @Override
+        for (char karakter : text.toCharArray()) {
+            if (Character.isLetter(karakter)) {
+                char base = Character.isLowerCase(karakter) ? 'a' : 'A';
+                karakter = (char) (base + (karakter - base + key) % 26);
+            }
+            result.append(karakter);
+        }
+
+        return result.toString();
+    }
+
+    public static String çözmee(String text, int key) {
+        return şifrelemee(text, 26 - key);
+    }
+
+    public static void main(String[] args) {
+        new Main();
+    }
+
+
+    @Override
     public void actionPerformed(ActionEvent e) {
 
     }
